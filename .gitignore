@@ -134,3 +134,7 @@ dist
 config/
 
 # public/image/
+
+# v2
+client/dist/
+!.env.example
