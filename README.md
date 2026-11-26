@@ -75,13 +75,7 @@ TEST_MONGO_URI=mongodb://127.0.0.1:27017/nts-test npm test      # also runs the 
 
 ## Moving data over from v1
 
-v1 stored books as `{ title, description, bulletPoint, mainTheme }`, and users without usernames. With `MONGO_URI` pointing at the old database, run:
-
-```bash
-npm run migrate:legacy --prefix server
-```
-
-It's safe to run more than once. Old passwords keep working. Afterwards, open each migrated summary as an admin to add the author, genres and verdict.
+v1 stored books as `{ title, description, bulletPoint, mainTheme }`, and users without usernames (database `NovelDB`). **The server migrates them automatically on startup**: point `MONGO_URI` at the old database and deploy. It's safe on every start, because migrated documents are skipped. You can also run it by hand with `npm run migrate:legacy --prefix server`. Old passwords keep working, and existing accounts whose email is in `ADMIN_EMAILS` become admins. Afterwards, open each migrated summary as an admin to add the author, genres and verdict.
 
 ## Deploy
 
